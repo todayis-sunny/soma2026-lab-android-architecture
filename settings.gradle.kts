@@ -35,4 +35,5 @@ include(":clean:clean-domain")
 include(":clean:clean-data")
 
 include(":core:core-ui")
+include(":core:core-network")
  
