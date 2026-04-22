@@ -35,6 +35,7 @@ android {
 
 dependencies {
     implementation(project(":clean:clean-domain"))
+    implementation(project(":core:core-network"))
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
     implementation(libs.kotlinx.coroutines.android)
