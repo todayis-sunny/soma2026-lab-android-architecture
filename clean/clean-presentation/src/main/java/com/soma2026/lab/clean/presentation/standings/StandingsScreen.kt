@@ -80,25 +80,26 @@ fun StandingsScreen(
 @Composable
 private fun StandingsHeader() {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 4.dp),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 12.dp, vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Text(
             text = "#",
             fontSize = 11.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            modifier = Modifier.width(20.dp)
+            modifier = Modifier.width(20.dp),
         )
-        Spacer(modifier = Modifier.size(24.dp))
+        Spacer(modifier = Modifier.size(4.dp))
         Text(
             text = "팀",
             fontSize = 11.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f),
         )
         listOf("P", "W", "D", "L", "GD", "Pts").forEach { label ->
             Text(
@@ -106,7 +107,7 @@ private fun StandingsHeader() {
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.width(24.dp)
+                modifier = Modifier.width(24.dp),
             )
         }
         Text(
@@ -114,7 +115,7 @@ private fun StandingsHeader() {
             fontSize = 11.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            modifier = Modifier.width(88.dp)
+            modifier = Modifier.width(16.dp),
         )
     }
 }
