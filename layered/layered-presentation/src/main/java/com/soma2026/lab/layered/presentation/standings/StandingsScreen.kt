@@ -3,9 +3,12 @@ package com.soma2026.lab.layered.presentation.standings
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
@@ -81,17 +84,37 @@ private fun StandingsHeader() {
             .padding(horizontal = 12.dp, vertical = 4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text("#", fontSize = 11.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(end = 4.dp))
-        Text("팀", fontSize = 11.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
+        // position width(20.dp) + logo size(24.dp) + spacing 8.dp
+        Text(
+            text = "#",
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.width(20.dp)
+        )
+        Spacer(modifier = Modifier.size(24.dp + 8.dp))
+        Text(
+            text = "팀",
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.weight(1f)
+        )
         listOf("P", "W", "D", "L", "GD", "Pts").forEach { label ->
             Text(
                 text = label,
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 4.dp)
+                modifier = Modifier.width(24.dp)
             )
         }
-        Text("최근", fontSize = 11.sp, fontWeight = FontWeight.Bold)
+        // FormBadge: 도트 5개(16.dp) + spacing 4개(2.dp) = 88.dp
+        Text(
+            text = "최근",
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.width(88.dp)
+        )
     }
 }

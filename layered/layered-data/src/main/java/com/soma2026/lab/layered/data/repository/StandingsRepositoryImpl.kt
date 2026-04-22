@@ -11,11 +11,10 @@ class StandingsRepositoryImpl @Inject constructor(
 ) : StandingsRepository {
 
     override suspend fun getStandings(): Result<List<Standing>> = runCatching {
-        apiService.getStandings()
-            .standings
-            .first { it.type == "TOTAL" }
-            .table
-            .map { it.toDomain() }
+        val response = apiService.getStandings()
+        val totalStandings = response.standings.find { it.type == "TOTAL" }
+            ?: throw IllegalStateException("Standings response does not contain TOTAL type standings.")
+        totalStandings.table.map { it.toDomain() }
     }
 }
 
