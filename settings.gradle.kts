@@ -23,5 +23,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "soma2026-lab-android-architecture"
-include(":app")
+include(":app-layered")
  
