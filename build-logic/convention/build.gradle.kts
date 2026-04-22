@@ -12,6 +12,7 @@ java {
 dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.hilt.gradlePlugin)
 }
 
 gradlePlugin {
@@ -31,6 +32,10 @@ gradlePlugin {
         register("kotlinJvm") {
             id = "soma2026.kotlin.jvm"
             implementationClass = "KotlinJvmConventionPlugin"
+        }
+        register("androidHilt") {
+            id = "soma2026.android.hilt"
+            implementationClass = "AndroidHiltConventionPlugin"
         }
     }
 }
