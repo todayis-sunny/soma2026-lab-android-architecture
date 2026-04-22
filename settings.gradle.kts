@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -23,5 +24,17 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "soma2026-lab-android-architecture"
-include(":app")
+include(":app-layered")
+include(":app-clean")
+
+include(":layered:layered-presentation")
+include(":layered:layered-domain")
+include(":layered:layered-data")
+
+include(":clean:clean-presentation")
+include(":clean:clean-domain")
+include(":clean:clean-data")
+
+include(":core:core-ui")
+include(":core:core-network")
  
