@@ -29,4 +29,8 @@ include(":app-clean")
 include(":layered:layered-presentation")
 include(":layered:layered-domain")
 include(":layered:layered-data")
+
+include(":clean:clean-presentation")
+include(":clean:clean-domain")
+include(":clean:clean-data")
  
