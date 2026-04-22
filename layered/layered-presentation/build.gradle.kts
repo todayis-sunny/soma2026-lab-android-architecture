@@ -39,6 +39,7 @@ android {
 
 dependencies {
     implementation(project(":layered:layered-domain"))
+    implementation(project(":core:core-ui"))
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
@@ -49,6 +50,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.hilt.navigation.compose)
     implementation(libs.kotlinx.coroutines.android)
 
     testImplementation(libs.junit)
