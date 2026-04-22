@@ -47,6 +47,7 @@ dependencies {
 
     implementation(project(":layered:layered-presentation"))
     implementation(project(":layered:layered-data"))
+    implementation(project(":core:core-ui"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
