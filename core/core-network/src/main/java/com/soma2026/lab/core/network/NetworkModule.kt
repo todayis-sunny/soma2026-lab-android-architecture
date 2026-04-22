@@ -27,7 +27,8 @@ object NetworkModule {
             .addInterceptor(ApiKeyInterceptor(BuildConfig.FOOTBALL_API_KEY))
             .addInterceptor(
                 HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
+                    level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
+                            else HttpLoggingInterceptor.Level.NONE
                 }
             )
             .build()

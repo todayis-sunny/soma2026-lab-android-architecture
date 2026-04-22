@@ -8,7 +8,7 @@ plugins {
 
 val localProperties = Properties().apply {
     val file = rootProject.file("local.properties")
-    if (file.exists()) load(file.inputStream())
+    if (file.exists()) file.inputStream().use { load(it) }
 }
 
 android {
@@ -24,8 +24,13 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
 
-        buildConfigField("String", "FOOTBALL_BASE_URL", "\"${localProperties["FOOTBALL_BASE_URL"]}\"")
-        buildConfigField("String", "FOOTBALL_API_KEY", "\"${localProperties["FOOTBALL_API_KEY"]}\"")
+        val footballBaseUrl = localProperties["FOOTBALL_BASE_URL"]?.toString()
+            ?: throw GradleException("local.properties에 FOOTBALL_BASE_URL을 추가해주세요")
+        val footballApiKey = localProperties["FOOTBALL_API_KEY"]?.toString()
+            ?: throw GradleException("local.properties에 FOOTBALL_API_KEY를 추가해주세요")
+
+        buildConfigField("String", "FOOTBALL_BASE_URL", "\"$footballBaseUrl\"")
+        buildConfigField("String", "FOOTBALL_API_KEY", "\"$footballApiKey\"")
     }
 
     buildFeatures {
