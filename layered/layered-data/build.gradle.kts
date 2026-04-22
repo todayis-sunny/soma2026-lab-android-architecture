@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -33,6 +34,8 @@ android {
 
 dependencies {
     implementation(project(":layered:layered-domain"))
+    implementation(libs.hilt.android)
+    annotationProcessor(libs.hilt.android.compiler)
     implementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.junit)
 }
