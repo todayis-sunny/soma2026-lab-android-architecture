@@ -24,9 +24,11 @@ object NetworkModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient =
         OkHttpClient.Builder()
+            .addInterceptor(ApiKeyInterceptor(BuildConfig.FOOTBALL_API_KEY))
             .addInterceptor(
                 HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
+                    level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
+                            else HttpLoggingInterceptor.Level.NONE
                 }
             )
             .build()
@@ -38,7 +40,7 @@ object NetworkModule {
         gson: Gson,
     ): Retrofit =
         Retrofit.Builder()
-            .baseUrl("https://api.example.com/")
+            .baseUrl(BuildConfig.FOOTBALL_BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
