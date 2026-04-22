@@ -33,4 +33,6 @@ include(":layered:layered-data")
 include(":clean:clean-presentation")
 include(":clean:clean-domain")
 include(":clean:clean-data")
+
+include(":core:core-ui")
  
