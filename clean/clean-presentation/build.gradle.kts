@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
 }
 
@@ -40,7 +41,7 @@ dependencies {
     implementation(project(":clean:clean-domain"))
 
     implementation(libs.hilt.android)
-    annotationProcessor(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.material3)
