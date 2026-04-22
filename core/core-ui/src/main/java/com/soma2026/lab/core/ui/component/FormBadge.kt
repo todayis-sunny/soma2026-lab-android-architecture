@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,11 +24,12 @@ fun FormBadge(
     form: String,
     modifier: Modifier = Modifier
 ) {
+    val results = remember(form) { form.split(",").takeLast(5) }
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
-        form.split(",").takeLast(5).forEach { result ->
+        results.forEach { result ->
             FormDot(result.trim())
         }
     }
