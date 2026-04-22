@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -40,6 +41,12 @@ android {
 }
 
 dependencies {
+    implementation(libs.hilt.android)
+    annotationProcessor(libs.hilt.android.compiler)
+
+    implementation(project(":layered:layered-presentation"))
+    implementation(project(":layered:layered-data"))
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)

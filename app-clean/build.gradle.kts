@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -40,6 +41,12 @@ android {
 }
 
 dependencies {
+    implementation(libs.hilt.android)
+    annotationProcessor(libs.hilt.android.compiler)
+
+    implementation(project(":clean:clean-presentation"))
+    implementation(project(":clean:clean-data"))
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
