@@ -47,6 +47,7 @@ dependencies {
 
     implementation(project(":clean:clean-presentation"))
     implementation(project(":clean:clean-data"))
+    implementation(project(":core:core-ui"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
