@@ -1,82 +1,22 @@
-name: "Architecture Practice"
-description: "안드로이드 아키텍처 실습용 이슈 템플릿"
-title: "[Architecture] "
-labels:
-  - "type:practice"
-  - "area:architecture"
+name: "✨ Feature"
+description: "새로운 기능 추가"
+labels: ["feature"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        앱 아키텍처 연습을 위한 이슈 템플릿입니다.
-        필요에 따라 라벨(`area:*`, `type:*`, `priority:*`)을 조정하세요.
-
-  - type: dropdown
-    id: architecture_style
-    attributes:
-      label: 아키텍처 주제
-      description: 이번 이슈에서 다룰 핵심 아키텍처 주제를 선택하세요.
-      options:
-        - Layered Architecture
-        - Clean Architecture
-        - MVVM
-        - MVI
-        - Dependency Injection
-        - Testing Strategy
-        - 기타
-    validations:
-      required: true
-
-  - type: dropdown
-    id: target_layer
-    attributes:
-      label: 대상 레이어
-      options:
-        - Domain
-        - Data
-        - Presentation
-        - Cross-layer
-    validations:
-      required: true
-
   - type: textarea
-    id: problem
     attributes:
-      label: 문제/배경
-      description: 왜 이 작업이 필요한지 작성해주세요.
-      placeholder: 현재 구조의 문제점, 개선 필요성 등을 적어주세요.
+      label: 📄 설명
+      description: 새로운 기능에 대한 설명을 작성해 주세요.
+      placeholder: 자세히 적을수록 좋습니다!
     validations:
       required: true
-
   - type: textarea
-    id: goal
     attributes:
-      label: 목표
-      description: 완료 기준(Definition of Done)을 명확히 적어주세요.
-      placeholder: 예) 데이터 레이어 인터페이스 분리, 유스케이스 단위 테스트 작성
+      label: ✅ 작업할 내용
+      description: 할 일을 체크박스 형태로 작성해주세요.
+      placeholder: 최대한 세분화 해서 적어주세요!
     validations:
       required: true
-
   - type: textarea
-    id: tasks
     attributes:
-      label: 작업 항목
-      description: 체크리스트 형태로 작성하면 좋습니다.
-      placeholder: |
-        - [ ] 도메인 모델 정리
-        - [ ] Repository 인터페이스 정의
-        - [ ] ViewModel 상태 흐름 반영
-    validations:
-      required: true
-
-  - type: textarea
-    id: acceptance
-    attributes:
-      label: 수용 기준
-      description: 리뷰/검증 시 확인할 기준을 적어주세요.
-      placeholder: |
-        - [ ] 레이어 의존성이 단방향이다
-        - [ ] 변경된 구조를 설명할 수 있다
-        - [ ] 관련 테스트가 통과한다
-    validations:
-      required: true
+      label: 🙋🏻 참고 자료
+      description: 참고 자료가 있다면 작성해 주세요.
