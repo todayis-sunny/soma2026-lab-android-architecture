@@ -5,13 +5,11 @@ import org.gradle.kotlin.dsl.dependencies
 class AndroidHiltConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("com.google.dagger.hilt.android")
-                apply("com.google.devtools.ksp")
-            }
+            // AGP 9.x + built-in Kotlin: hilt plugin + annotationProcessor
+            pluginManager.apply("com.google.dagger.hilt.android")
             dependencies {
-                "implementation"("com.google.dagger:hilt-android:2.51.1")
-                "ksp"("com.google.dagger:hilt-android-compiler:2.51.1")
+                add("implementation", "com.google.dagger:hilt-android:2.59.2")
+                add("annotationProcessor", "com.google.dagger:hilt-android-compiler:2.59.2")
             }
         }
     }

@@ -13,7 +13,7 @@ coroutines = "1.7.3"
 retrofit = "2.9.0"
 okhttp = "4.11.0"
 gson = "2.10.1"
-hilt = "2.51.1"
+hilt = "2.59.2"
 ksp = "2.2.10-2.0.2"
 
 [libraries]
@@ -54,4 +54,5 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 

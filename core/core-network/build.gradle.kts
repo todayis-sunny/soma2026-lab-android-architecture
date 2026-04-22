@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -38,6 +39,9 @@ dependencies {
     api(libs.okhttp.logging.interceptor)
     api(libs.gson)
     implementation(libs.kotlinx.coroutines.android)
+
+    implementation(libs.hilt.android)
+    annotationProcessor(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
