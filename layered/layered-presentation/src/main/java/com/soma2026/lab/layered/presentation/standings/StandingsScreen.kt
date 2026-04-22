@@ -1,5 +1,6 @@
 package com.soma2026.lab.layered.presentation.standings
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,7 +30,7 @@ import com.soma2026.lab.core.ui.component.StandingRow
 @Composable
 fun StandingsScreen(
     modifier: Modifier = Modifier,
-    viewModel: StandingsViewModel = hiltViewModel()
+    viewModel: StandingsViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -38,7 +39,7 @@ fun StandingsScreen(
             text = "프리미어리그 순위표",
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
         StandingsHeader()
         HorizontalDivider()
@@ -48,6 +49,7 @@ fun StandingsScreen(
                     CircularProgressIndicator()
                 }
             }
+
             is StandingsUiState.Success -> {
                 LazyColumn {
                     items(state.standings) { standing ->
@@ -61,12 +63,13 @@ fun StandingsScreen(
                             lost = standing.lost,
                             points = standing.points,
                             goalDifference = standing.goalDifference,
-                            form = standing.form
+                            form = standing.form,
                         )
                         HorizontalDivider()
                     }
                 }
             }
+
             is StandingsUiState.Error -> {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Text(text = state.message)
@@ -79,25 +82,26 @@ fun StandingsScreen(
 @Composable
 private fun StandingsHeader() {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 4.dp),
-        verticalAlignment = Alignment.CenterVertically
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 12.dp, vertical = 4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        // position width(20.dp) + logo size(24.dp) + spacing 8.dp
         Text(
             text = "#",
             fontSize = 11.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            modifier = Modifier.width(20.dp)
+            modifier = Modifier.width(20.dp),
         )
-        Spacer(modifier = Modifier.size(24.dp + 8.dp))
+        Spacer(modifier = Modifier.size(4.dp))
         Text(
             text = "팀",
             fontSize = 11.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f),
         )
         listOf("P", "W", "D", "L", "GD", "Pts").forEach { label ->
             Text(
@@ -105,16 +109,15 @@ private fun StandingsHeader() {
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.width(24.dp)
+                modifier = Modifier.width(24.dp),
             )
         }
-        // FormBadge: 도트 5개(16.dp) + spacing 4개(2.dp) = 88.dp
         Text(
             text = "최근",
             fontSize = 11.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            modifier = Modifier.width(88.dp)
+            modifier = Modifier.width(16.dp),
         )
     }
 }

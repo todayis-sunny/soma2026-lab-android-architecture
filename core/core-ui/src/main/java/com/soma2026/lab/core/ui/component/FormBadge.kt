@@ -41,7 +41,7 @@ private fun FormDot(result: String) {
         "W" -> FormWin
         "D" -> FormDraw
         "L" -> FormLoss
-        else -> Color.Gray
+        else -> Color.Transparent
     }
     Box(
         modifier = Modifier
