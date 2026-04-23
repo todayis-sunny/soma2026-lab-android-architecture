@@ -16,7 +16,7 @@ root/
 │
 ├── layered/
 │   ├── layered-presentation/ # UI(ViewModel, Compose Screen)
-│   ├── layered-domain/       # UseCase, Repository 인터페이스
+│   ├── layered-domain/       # UseCase (Repository 구현체 직접 참조)
 │   └── layered-data/         # Repository 구현체, DataSource
 │
 ├── clean/
@@ -49,6 +49,7 @@ root/
 | DI | Hilt (이슈 #5) |
 | 네트워크 | Retrofit + OkHttp + GSON |
 | 네비게이션 | Compose Navigation |
+| 테스트 | JUnit4 + MockK + kotlinx-coroutines-test |
 
 버전은 `gradle/libs.versions.toml` (Version Catalog)에서 중앙 관리한다.
 
@@ -75,10 +76,11 @@ app-layered / app-clean
 ## 아키텍처별 규칙
 
 ### Layered 아키텍처 (`layered-*`)
-- Presentation → Domain → Data 단방향 흐름
+- Presentation → Domain → Data 단방향 흐름 (모듈 의존성도 동일 방향)
 - Domain 레이어에 비즈니스 로직 집중 (UseCase 클래스)
 - ViewModel은 `@HiltViewModel`로 주입
-- Repository 인터페이스: domain, 구현체: data
+- UseCase는 Repository 구현체(`RepositoryImpl`)를 직접 주입받아 사용
+- 테스트 시 MockK로 구현체를 모킹 (인터페이스 추출 없음)
 
 ### Clean 아키텍처 (`clean-*`)
 - `clean-domain`은 **순수 Kotlin 모듈** — Android 의존성 없음
@@ -110,6 +112,8 @@ app-layered / app-clean
 | #12 | core-ui 공통 Compose 컴포넌트 및 테마 구성 | `feature/core-ui-components` | ✅ 완료 |
 | #9 | Layered 아키텍처 순위표 화면 구현 | `feature/layered-standings` | ✅ 완료 |
 | #10 | Clean 아키텍처 순위표 화면 구현 | `feature/clean-standings` | ✅ 완료 |
+| #19 | layered-domain UseCase 단위 테스트 작성 | `feature/layered-domain-test` | 🚧 진행 중 |
+| #20 | clean-domain UseCase 단위 테스트 작성 | — | ⬜ 예정 |
 
 **작업 순서**:
 ```
