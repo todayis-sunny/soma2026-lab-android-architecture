@@ -8,4 +8,11 @@ plugins {
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.dependency.graph.generator)
+}
+
+dependencyGraphGenerator {
+    projectGenerators += com.vanniktech.dependency.graph.generator.DependencyGraphGeneratorExtension.ProjectGenerator(
+        name = "modules",
+    )
 }

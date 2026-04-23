@@ -2,7 +2,7 @@ package com.soma2026.lab.layered.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma2026.lab.layered.domain.repository.SampleRepository
+import com.soma2026.lab.layered.domain.usecase.GetSampleDataUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SampleViewModel @Inject constructor(
-    private val sampleRepository: SampleRepository,
+    private val getSampleDataUseCase: GetSampleDataUseCase,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<SampleUiState>(SampleUiState.Idle)
@@ -20,7 +20,7 @@ class SampleViewModel @Inject constructor(
     fun loadData() {
         viewModelScope.launch {
             _uiState.value = SampleUiState.Loading
-            sampleRepository.getData()
+            getSampleDataUseCase()
                 .onSuccess { data -> _uiState.value = SampleUiState.Success(data) }
                 .onFailure { error -> _uiState.value = SampleUiState.Error(error.message ?: "Unknown error") }
         }

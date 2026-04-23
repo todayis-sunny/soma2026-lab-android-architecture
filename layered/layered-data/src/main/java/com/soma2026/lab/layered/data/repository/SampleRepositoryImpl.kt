@@ -1,10 +1,11 @@
 package com.soma2026.lab.layered.data.repository
 
-import com.soma2026.lab.layered.domain.repository.SampleRepository
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class SampleRepositoryImpl @Inject constructor() : SampleRepository {
-    override suspend fun getData(): Result<String> {
+@Singleton
+class SampleRepositoryImpl @Inject constructor() {
+    suspend fun getData(): Result<String> {
         return Result.success("Hello from Layered Data Layer")
     }
 }
