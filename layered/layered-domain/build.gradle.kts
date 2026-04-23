@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":layered:layered-data"))
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.javax.inject)
     testImplementation(libs.junit)
