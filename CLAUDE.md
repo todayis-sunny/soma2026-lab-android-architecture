@@ -81,9 +81,10 @@ app-layered / app-clean
 - ViewModel은 `@HiltViewModel`로 주입
 - UseCase는 Repository 구현체(`RepositoryImpl`)를 직접 주입받아 사용
 - 테스트 시 MockK로 구현체를 모킹 (인터페이스 추출 없음)
+- `layered-domain`은 `android.library` 플러그인 사용 — `layered-data`(Android 모듈)에 의존하기 때문이며, Android API를 직접 사용하지는 않음. Clean과의 의도적인 차이점.
 
 ### Clean 아키텍처 (`clean-*`)
-- `clean-domain`은 **순수 Kotlin 모듈** — Android 의존성 없음
+- `clean-domain`은 **순수 Kotlin 모듈** (`kotlin.jvm`) — data 레이어를 모르므로 Android 오염 없음
 - Entity는 domain에만 존재하며 data 레이어에서는 DTO + Mapper로 변환
 - UseCase는 단일 책임: 파일 하나에 `operator fun invoke()` 하나
 - `@Binds`를 사용한 인터페이스 바인딩 방식으로 DI
