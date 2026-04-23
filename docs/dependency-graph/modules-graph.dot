@@ -1,0 +1,41 @@
+digraph "modules" {
+edge ["dir"="forward"]
+graph ["dpi"="150" "rankdir"="TB"]
+node ["shape"="rectangle" "style"="filled"]
+
+// app modules
+"app-clean"    ["label"="app-clean"    "fillcolor"="#AED6F1"]
+"app-layered"  ["label"="app-layered"  "fillcolor"="#AED6F1"]
+
+// clean arch modules
+"clean-presentation" ["label"="clean-presentation" "fillcolor"="#A9DFBF"]
+"clean-domain"       ["label"="clean-domain"       "fillcolor"="#A9DFBF"]
+"clean-data"         ["label"="clean-data"          "fillcolor"="#A9DFBF"]
+
+// layered arch modules
+"layered-presentation" ["label"="layered-presentation" "fillcolor"="#FAD7A0"]
+"layered-domain"       ["label"="layered-domain"       "fillcolor"="#FAD7A0"]
+"layered-data"         ["label"="layered-data"          "fillcolor"="#FAD7A0"]
+
+// core modules
+"core-ui"      ["label"="core-ui"      "fillcolor"="#D2B4DE"]
+"core-network" ["label"="core-network" "fillcolor"="#D2B4DE"]
+
+// edges — clean
+"app-clean"    -> "clean-presentation"
+"app-clean"    -> "clean-data"
+"app-clean"    -> "core-ui"
+"clean-presentation" -> "clean-domain"
+"clean-presentation" -> "core-ui"
+"clean-data"   -> "clean-domain"
+"clean-data"   -> "core-network"
+
+// edges — layered
+"app-layered"  -> "layered-presentation"
+"app-layered"  -> "layered-data"
+"app-layered"  -> "core-ui"
+"layered-presentation" -> "layered-domain"
+"layered-presentation" -> "core-ui"
+"layered-domain" -> "layered-data"
+"layered-data" -> "core-network"
+}
