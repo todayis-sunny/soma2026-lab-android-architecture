@@ -33,7 +33,7 @@ root/
     └── convention/
 ```
 
-> **현재 상태**: `:app` 단일 모듈만 존재. 이슈 #4 작업으로 위 구조로 전환 예정.
+> **현재 상태**: 멀티모듈 구조 완성. 프리미어리그 순위표 화면 구현 완료 (Layered / Clean 양쪽).
 
 ---
 
@@ -101,12 +101,24 @@ app-layered / app-clean
 
 ## 이슈 & 작업 순서
 
-| 이슈 | 내용 | 브랜치 |
-|------|------|--------|
-| #4 | 멀티 모듈 구조 설계 및 리팩토링 | `feature/multi-module-setup` |
-| #5 | Hilt DI 환경 구축 및 기초 설정 | `feature/hilt-setup` |
+| 이슈 | 내용 | 브랜치 | 상태 |
+|------|------|--------|------|
+| #4 | 멀티 모듈 구조 설계 및 리팩토링 | `feature/multi-module-setup` | ✅ 완료 |
+| #5 | Hilt DI 환경 구축 및 기초 설정 | `feature/hilt-setup` | ✅ 완료 |
+| #8 | core-network API 키 & Retrofit 클라이언트 구성 | `feature/football-api-setup` | ✅ 완료 |
+| #13 | [Epic] 프리미어리그 순위표 화면 구현 | — | ✅ 완료 |
+| #12 | core-ui 공통 Compose 컴포넌트 및 테마 구성 | `feature/core-ui-components` | ✅ 완료 |
+| #9 | Layered 아키텍처 순위표 화면 구현 | `feature/layered-standings` | ✅ 완료 |
+| #10 | Clean 아키텍처 순위표 화면 구현 | `feature/clean-standings` | ✅ 완료 |
 
-**작업 순서**: #4 완료 → #5 진행 (모듈이 없으면 DI 설정 불가)
+**작업 순서**:
+```
+#4 → #5 → #8 (core-network)
+              └─ #13 Epic
+                   ├─ #12 (core-ui)
+                   ├─ #9  (Layered 화면)
+                   └─ #10 (Clean 화면)
+```
 
 ---
 
@@ -125,8 +137,8 @@ app-layered / app-clean
 # 테스트 실행
 ./gradlew test
 
-# 의존성 트리 확인
-./gradlew :app-layered:dependencies
+# 의존성 트리 확인 (configuration 미지정 시 KSP 내부 설정까지 모두 출력되어 지저분함)
+./gradlew :app-layered:dependencies --configuration releaseRuntimeClasspath
 ```
 
 ---
