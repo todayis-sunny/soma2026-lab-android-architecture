@@ -139,6 +139,14 @@ app-layered / app-clean
 
 # 의존성 트리 확인 (configuration 미지정 시 KSP 내부 설정까지 모두 출력되어 지저분함)
 ./gradlew :app-layered:dependencies --configuration releaseRuntimeClasspath
+
+# 전체 의존성 그래프 PNG/SVG 생성 (build/reports/dependency-graph/)
+./gradlew generateDependencyGraph
+
+# 모듈 간 의존성 그래프만 별도 DOT 파일로 생성 후 PNG 렌더링
+# (graphviz 필요: brew install graphviz)
+dot -Tpng build/reports/dependency-graph/modules-graph.dot \
+    -o build/reports/dependency-graph/modules-graph.png
 ```
 
 ---
